@@ -30,7 +30,7 @@ class User
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Person", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $idPerson;
 
