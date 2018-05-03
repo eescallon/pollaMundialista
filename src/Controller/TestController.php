@@ -7,7 +7,7 @@ class TestController
 {
 	public function test()
 	{
-		return new Response('<html><body>Lucky number:</body></html>')
+		return new Response('<html><body>Lucky number:</body></html>');
 	}
 }
 ?>
