@@ -44,10 +44,6 @@ class Forecast
      */
     private $idMatch;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-
     public function getId()
     {
         return $this->id;

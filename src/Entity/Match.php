@@ -17,7 +17,7 @@ class Match
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="datetime", length=30)
      */
 
     private $Date;
