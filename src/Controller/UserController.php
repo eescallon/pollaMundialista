@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 
 class UserController extends Controller
@@ -39,17 +40,27 @@ class UserController extends Controller
      */
     public function loginAction()
     {
-        $encoders = array(new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
-
-        $serializer = new Serializer($normalizers, $encoders);
+        $request = Request::createFromGlobals();
+        $content = $request->getContent();
+        $data = json_decode($content, true);
 
         $repository = $this->getDoctrine()->getRepository(User::class);
-        
-        $user = $repository->FindOneBy(["email" => "user2", "password" => "pass"]);
+        $user = $repository->FindOneBy(["email" => $data["user"] , "password" => $data["password"]]);
         if($user)
         {
-            $jsonUser = $serializer->serialize($user, 'json');
+            $jsonUser = array();
+            $jsonUser["id"] = $user->getId();
+            $jsonUser["email"] = $user->getEmail();
+            $jsonUser["points"] = $user->getPoints();
+            $person = $user->getIdPerson();
+            if($person)
+            {
+                $jsonPerson = array();
+                $jsonPerosn["id"] = $person->getId();
+                $jsonPerson["name"] = $person->getName();
+                $jsonPerson["lastName"] = $person->getLastname();
+                $jsonUser["person"] = $jsonPerson;
+            }
             return $this->json(array("success" => true, "data" => $jsonUser));
         }
         else
