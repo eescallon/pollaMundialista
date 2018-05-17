@@ -25,7 +25,6 @@ class MatchController extends Controller
         {
 	        $repositoryMatch = $this->getDoctrine()->getRepository(Match::class);
 	        $matchs = $repositoryMatch->FindBy(array());
-        	echo "entre";
 	        if($matchs)
 	        {
         		$jsonMatch = array();

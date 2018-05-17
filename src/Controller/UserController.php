@@ -41,6 +41,7 @@ class UserController extends Controller
         $content = $request->getContent();
         $data = json_decode($content, true);
 
+
         $repository = $this->getDoctrine()->getRepository(User::class);
         $user = $repository->FindOneBy(["email" => $data["user"] , "password" => $data["password"]]);
         if($user)
@@ -62,7 +63,7 @@ class UserController extends Controller
         }
         else
         {
-            return $this->json(array("success" => false, "data" => array()));
+            return $this->json(array("success" => false, "message" => "Usuario no encontrado"));
         }
     }
 }
