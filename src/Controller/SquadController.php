@@ -33,7 +33,7 @@ class SquadController extends Controller
     		),
     		array(
     			"name" => "Argentina",
-    			"flag" => "Argentina.jpg" 
+    			"flag" => "argentina.jpg" 
     		),
     		array(
     			"name" => "Belgica",
@@ -117,7 +117,7 @@ class SquadController extends Controller
     		),
     		array(
     			"name" => "Australia",
-    			"flag" => "astrualia.jpg" 
+    			"flag" => "australia.jpg" 
     		),
     		array(
     			"name" => "Japon",

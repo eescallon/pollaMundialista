@@ -6,6 +6,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
+use App\Entity\Person;
 
 class UserController extends Controller
 {
@@ -16,9 +17,19 @@ class UserController extends Controller
     {
         $entityManager = $this->getDoctrine()->getManager();
 
+        $person = new Person();
+        $person->setName("Alexander");
+        $person->setLastname("Peña");
+        $person->setBirthday(new \Datetime());
+        $person->setSex("M");
+        $person->setAdress("Direccion");
+        $person->setCity("Bogota");
+        $person->setPhone("123456");
+        $entityManager->persist($person);
         $user = new User();
         $user->setEmail('user');
         $user->setPassword("pass");
+        $user->setIdPerson($person);
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($user);
@@ -41,6 +52,7 @@ class UserController extends Controller
         $content = $request->getContent();
         $data = json_decode($content, true);
 
+
         $repository = $this->getDoctrine()->getRepository(User::class);
         $user = $repository->FindOneBy(["email" => $data["user"] , "password" => $data["password"]]);
         if($user)
@@ -62,7 +74,7 @@ class UserController extends Controller
         }
         else
         {
-            return $this->json(array("success" => false, "data" => array()));
+            return $this->json(array("success" => false, "message" => "Usuario no encontrado"));
         }
     }
 }
