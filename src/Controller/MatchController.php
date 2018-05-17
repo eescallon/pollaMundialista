@@ -24,13 +24,11 @@ class MatchController extends Controller
         $user = $repositoryUser->FindOneBy(["id" => $data["id"]]);
         if($user)
         {
-	        $repositoryMatch = $this->getDoctrine()->getRepository(Points::class);
-	        echo get_class($repositoryMatch);
+	        $repositoryMatch = $this->getDoctrine()->getRepository(Match::class);
 	        $matchs = $repositoryMatch->findAll();
-	        echo "entre";
+        	$jsonMatch = array();
 	        if($matchs)
 	        {
-        		$jsonMatch = array();
 	        	$repositoryForecast = $this->getDoctrine()->getRepository(Forecast::class);
 	        	foreach($matchs as $match)
 	        	{
@@ -63,9 +61,9 @@ class MatchController extends Controller
 	        		$json["forecast"] = $jsonForecast;
 	        		$jsonMatch[] = $json;
 	        	}
-            	return $this->json(array("success" => true, "data" => $jsonMatch));
-
 	        }
+            return $this->json(array("success" => true, "data" => $jsonMatch));
+
     	}
     	else
     	{
