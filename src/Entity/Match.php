@@ -19,18 +19,17 @@ class Match
     /**
      * @ORM\Column(type="datetime", length=30)
      */
-
-    private $Date;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $Score1;
+    private $date;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $Score2;
+    private $score1;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $score2;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Squad")

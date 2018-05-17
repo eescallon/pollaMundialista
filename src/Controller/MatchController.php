@@ -5,6 +5,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Match;
+use App\Entity\Points;
 use App\Entity\Forecast;
 use App\Entity\User;
 ;
@@ -23,8 +24,10 @@ class MatchController extends Controller
         $user = $repositoryUser->FindOneBy(["id" => $data["id"]]);
         if($user)
         {
-	        $repositoryMatch = $this->getDoctrine()->getRepository(Match::class);
-	        $matchs = $repositoryMatch->FindBy(array());
+	        $repositoryMatch = $this->getDoctrine()->getRepository(Points::class);
+	        echo get_class($repositoryMatch);
+	        $matchs = $repositoryMatch->findAll();
+	        echo "entre";
 	        if($matchs)
 	        {
         		$jsonMatch = array();

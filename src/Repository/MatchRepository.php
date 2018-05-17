@@ -19,6 +19,15 @@ class MatchRepository extends ServiceEntityRepository
         parent::__construct($registry, Match::class);
     }
 
+    public function getAllMatch()
+    {
+        echo "entre";
+        return $this->createQueryBuilder('m')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 //    /**
 //     * @return Match[] Returns an array of Match objects
 //     */
