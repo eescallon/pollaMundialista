@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20180517015415 extends AbstractMigration
+final class Version20180517024656 extends AbstractMigration
 {
     public function up(Schema $schema) : void
     {
@@ -16,7 +16,7 @@ final class Version20180517015415 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('CREATE TABLE forecast (id INT AUTO_INCREMENT NOT NULL, id_user_id INT NOT NULL, id_match_id INT NOT NULL, score1 INT NOT NULL, score2 INT NOT NULL, date DATETIME NOT NULL, INDEX IDX_2A9C784479F37AE5 (id_user_id), INDEX IDX_2A9C78447A654043 (id_match_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE tbmatch (id INT AUTO_INCREMENT NOT NULL, id_squad1_id INT NOT NULL, id_squad2_id INT NOT NULL, date DATETIME NOT NULL, score1 INT NOT NULL, score2 INT NOT NULL, INDEX IDX_7C0EB70FF35B78F (id_squad1_id), INDEX IDX_7C0EB70F1D801861 (id_squad2_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE tbmatch (id INT AUTO_INCREMENT NOT NULL, id_squad1_id INT NOT NULL, id_squad2_id INT NOT NULL, date DATETIME DEFAULT NULL, score1 INT DEFAULT NULL, score2 INT DEFAULT NULL, INDEX IDX_7C0EB70FF35B78F (id_squad1_id), INDEX IDX_7C0EB70F1D801861 (id_squad2_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE person (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(50) NOT NULL, lastname VARCHAR(50) NOT NULL, birthday DATE NOT NULL, sex VARCHAR(10) NOT NULL, adress VARCHAR(70) NOT NULL, city VARCHAR(50) NOT NULL, phone VARCHAR(12) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE points (id INT AUTO_INCREMENT NOT NULL, id_user_id INT NOT NULL, point INT NOT NULL, INDEX IDX_27BA8E2979F37AE5 (id_user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE squad (id INT AUTO_INCREMENT NOT NULL, flag VARCHAR(30) NOT NULL, name VARCHAR(40) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
