@@ -55,7 +55,7 @@ class Match
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $Date): self
+    public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
 
@@ -67,7 +67,7 @@ class Match
         return $this->score1;
     }
 
-    public function setScore1(int $Score1): self
+    public function setScore1(int $score1): self
     {
         $this->score1 = $score1;
 
@@ -79,7 +79,7 @@ class Match
         return $this->score2;
     }
 
-    public function setScore2(int $Score2): self
+    public function setScore2(int $score2): self
     {
         $this->score2 = $score2;
 

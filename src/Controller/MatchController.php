@@ -36,7 +36,6 @@ class MatchController extends Controller
     	$match2->setIdSquad1($squad3);
     	$match2->setIdSquad2($squad4);
     	$em->persist($match2);
-    	print_r($match2->getDate());
 
     	$em->flush();
         return $this->json(array("success" => false, "message" => "Partidos creados"));
