@@ -18,12 +18,58 @@ class MatchController extends Controller
 	public function insertMatch(){
     	$em = $this->getDoctrine()->getManager(); 
     	$repoSquad = $this->getDoctrine()->getRepository(Squad::class);
-    	$squad1 = $repoSquad->find(1);
-    	$squad2 = $repoSquad->find(2);
+    	$squad1 = $repoSquad->find(Rusia);
+    	$squad2 = $repoSquad->find(Arabia saudi);
 
-    	$squad3 = $repoSquad->find(3);
-    	$squad4 = $repoSquad->find(4);
+    	$squad3 = $repoSquad->find(Egipto);
+    	$squad4 = $repoSquad->find(Uruguay);
 
+        $squad5 = $repoSquad->find(Marruecos);
+        $squad6 = $repoSquad->find(Iran);
+
+        $squad7 = $repoSquad->find(Portugal);
+        $squad8 = $repoSquad->find(España);
+
+        $squad9 = $repoSquad->find(Francia);
+        $squad10 = $repoSquad->find(Australia);
+
+        $squad11 = $repoSquad->find(Argentina);
+        $squad12 = $repoSquad->find(Islandia);
+
+        $squad13 = $repoSquad->find(Perú);
+        $squad14 = $repoSquad->find(Dinamarca);
+
+        $squad15 = $repoSquad->find(Croacia);
+        $squad16 = $repoSquad->find(Nigeria);
+
+        $squad17 = $repoSquad->find(Costa Rica);
+        $squad18 = $repoSquad->find(Serbia);
+
+        $squad19 = $repoSquad->find(Alemania);
+        $squad20 = $repoSquad->find(Mexico);
+
+        $squad21 = $repoSquad->find(Brasil);
+        $squad22 = $repoSquad->find(Suiza);
+
+        $squad23 = $repoSquad->find(Suecia);
+        $squad24 = $repoSquad->find(Corea del sur);
+
+        $squad25 = $repoSquad->find(Belgica);
+        $squad26 = $repoSquad->find(Panama);
+
+        $squad27 = $repoSquad->find(Túnez);
+        $squad28 = $repoSquad->find(Inglaterra);
+
+        $squad29 = $repoSquad->find(Polonia);
+        $squad30 = $repoSquad->find(senegal);
+
+        $squad31 = $repoSquad->find(Colombia);
+        $squad32 = $repoSquad->find(Japon);
+
+       
+
+        $squad3 = $repoSquad->find(3);
+        $squad4 = $repoSquad->find(4);
     	$match1 = new Match();
     	$match1->setDate(new \Datetime());
     	$match1->setIdSquad1($squad1);
