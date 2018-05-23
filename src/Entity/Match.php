@@ -18,17 +18,17 @@ class Match
     private $id;
 
     /**
-     * @ORM\Column(type="datetime", length=30)
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $date;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $score1;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $score2;
 
@@ -52,36 +52,36 @@ class Match
 
     public function getDate(): ?\DateTimeInterface
     {
-        return $this->Date;
+        return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $Date): self
+    public function setDate(\DateTimeInterface $date): self
     {
-        $this->Date = $Date;
+        $this->date = $date;
 
         return $this;
     }
 
     public function getScore1(): ?int
     {
-        return $this->Score1;
+        return $this->score1;
     }
 
-    public function setScore1(int $Score1): self
+    public function setScore1(int $score1): self
     {
-        $this->Score1 = $Score1;
+        $this->score1 = $score1;
 
         return $this;
     }
 
     public function getScore2(): ?int
     {
-        return $this->Score2;
+        return $this->score2;
     }
 
-    public function setScore2(int $Score2): self
+    public function setScore2(int $score2): self
     {
-        $this->Score2 = $Score2;
+        $this->score2 = $score2;
 
         return $this;
     }

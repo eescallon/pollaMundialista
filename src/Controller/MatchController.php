@@ -8,9 +8,39 @@ use App\Entity\Match;
 use App\Entity\Points;
 use App\Entity\Forecast;
 use App\Entity\User;
+use App\Entity\Squad;
 ;
 class MatchController extends Controller
 {
+	/**
+     * @Route("/insertmatch", name="insertmatch")
+     */
+	public function insertMatch(){
+    	$em = $this->getDoctrine()->getManager(); 
+    	$repoSquad = $this->getDoctrine()->getRepository(Squad::class);
+    	$squad1 = $repoSquad->find(1);
+    	$squad2 = $repoSquad->find(2);
+
+    	$squad3 = $repoSquad->find(3);
+    	$squad4 = $repoSquad->find(4);
+
+    	$match1 = new Match();
+    	$match1->setDate(new \Datetime());
+    	$match1->setIdSquad1($squad1);
+    	$match1->setIdSquad2($squad2);
+    	$em->persist($match1);
+
+
+    	$match2 = new Match();
+    	$match2->setDate(new \Datetime());
+    	$match2->setIdSquad1($squad3);
+    	$match2->setIdSquad2($squad4);
+    	$em->persist($match2);
+
+    	$em->flush();
+        return $this->json(array("success" => false, "message" => "Partidos creados"));
+	}
+
 	/**
      * @Route("/allmatch", name="allmatch")
      */
@@ -34,7 +64,7 @@ class MatchController extends Controller
 	        	{
 	        		$json = array();
 	        		$json["id"] = $match->getId();
-	        		$json["date"] = $match->getDate()->format("Y-m-d H:i:s");
+	        		//$json["date"] = $match->getDate()->format("Y-m-d H:i:s");
 	        		$squad1 = $match->getIdSquad1();
 	        		$jsonSquad1 = array();
 	        		$jsonSquad1["id"] = $squad1->getId();

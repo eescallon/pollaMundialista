@@ -11,7 +11,7 @@ use App\Entity\User;
 class ForecastController extends Controller
 {
 	/**
-     * @Route("/insertforecast", name="insertforecast")
+     * @Route("/insert/forecast", name="insertforecast")
      */
     public function insertForecast()
     {
@@ -21,9 +21,11 @@ class ForecastController extends Controller
         $data = json_decode($content, true);
         $repositoryUser = $this->getDoctrine()->getRepository(User::class);
         $repositoryMatch = $this->getDoctrine()->getRepository(Match::class);
-        $match = $repositoryMatch->FindOneBy(["id" => $data["match"]["id"]]);
+        $match = $repositoryMatch->FindOneBy(["id" => $data["idMatch"]]);
         $user = $repositoryUser->FindOneBy(["id" => $data["idUser"]]);
         $dateNow = new \Datetime();
+        print_r($dateNow);
+        print_r($match->getDate());
         if($dateNow < $match->getDate())
         {
         	$repositoryForecast = $this->getDoctrine()->getRepository(Forecast::class);
