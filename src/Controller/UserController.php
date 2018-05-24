@@ -18,17 +18,17 @@ class UserController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
 
         $person = new Person();
-        $person->setName("Alexander");
-        $person->setLastname("Peña");
+        $person->setName("Brayan");
+        $person->setLastname("Agudelo");
         $person->setBirthday(new \Datetime());
         $person->setSex("M");
         $person->setAdress("Direccion");
         $person->setCity("Bogota");
-        $person->setPhone("123456");
+        $person->setPhone("'54352342'");
         $entityManager->persist($person);
         $user = new User();
-        $user->setEmail('user');
-        $user->setPassword("pass");
+        $user->setEmail('bagudelo');
+        $user->setPassword("brayan123");
         $user->setIdPerson($person);
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)

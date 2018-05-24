@@ -24,8 +24,6 @@ class ForecastController extends Controller
         $match = $repositoryMatch->FindOneBy(["id" => $data["idMatch"]]);
         $user = $repositoryUser->FindOneBy(["id" => $data["idUser"]]);
         $dateNow = new \Datetime();
-        print_r($dateNow);
-        print_r($match->getDate());
         if($dateNow < $match->getDate())
         {
         	$repositoryForecast = $this->getDoctrine()->getRepository(Forecast::class);

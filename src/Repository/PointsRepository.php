@@ -19,22 +19,17 @@ class PointsRepository extends ServiceEntityRepository
         parent::__construct($registry, Points::class);
     }
 
-//    /**
-//     * @return Points[] Returns an array of Points objects
-//     */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Points[] Returns an array of Points objects
+     */
+    public function findPositions()
     {
         return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('p.Point', 'DESC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Points
