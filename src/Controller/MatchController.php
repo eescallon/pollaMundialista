@@ -18,53 +18,53 @@ class MatchController extends Controller
 	public function insertMatch(){
     	$em = $this->getDoctrine()->getManager(); 
     	$repoSquad = $this->getDoctrine()->getRepository(Squad::class);
-    	$squad1 = $repoSquad->find(Rusia);
-    	$squad2 = $repoSquad->find(Arabia saudi);
+    	// $squad1 = $repoSquad->find(Rusia);
+    	// $squad2 = $repoSquad->find(Arabia saudi);
 
-    	$squad3 = $repoSquad->find(Egipto);
-    	$squad4 = $repoSquad->find(Uruguay);
+    	// $squad3 = $repoSquad->find(Egipto);
+    	// $squad4 = $repoSquad->find(Uruguay);
 
-        $squad5 = $repoSquad->find(Marruecos);
-        $squad6 = $repoSquad->find(Iran);
+     //    $squad5 = $repoSquad->find(Marruecos);
+     //    $squad6 = $repoSquad->find(Iran);
 
-        $squad7 = $repoSquad->find(Portugal);
-        $squad8 = $repoSquad->find(España);
+     //    $squad7 = $repoSquad->find(Portugal);
+     //    $squad8 = $repoSquad->find(España);
 
-        $squad9 = $repoSquad->find(Francia);
-        $squad10 = $repoSquad->find(Australia);
+     //    $squad9 = $repoSquad->find(Francia);
+     //    $squad10 = $repoSquad->find(Australia);
 
-        $squad11 = $repoSquad->find(Argentina);
-        $squad12 = $repoSquad->find(Islandia);
+     //    $squad11 = $repoSquad->find(Argentina);
+     //    $squad12 = $repoSquad->find(Islandia);
 
-        $squad13 = $repoSquad->find(Perú);
-        $squad14 = $repoSquad->find(Dinamarca);
+     //    $squad13 = $repoSquad->find(Perú);
+     //    $squad14 = $repoSquad->find(Dinamarca);
 
-        $squad15 = $repoSquad->find(Croacia);
-        $squad16 = $repoSquad->find(Nigeria);
+     //    $squad15 = $repoSquad->find(Croacia);
+     //    $squad16 = $repoSquad->find(Nigeria);
 
-        $squad17 = $repoSquad->find(Costa Rica);
-        $squad18 = $repoSquad->find(Serbia);
+     //    $squad17 = $repoSquad->find(Costa Rica);
+     //    $squad18 = $repoSquad->find(Serbia);
 
-        $squad19 = $repoSquad->find(Alemania);
-        $squad20 = $repoSquad->find(Mexico);
+     //    $squad19 = $repoSquad->find(Alemania);
+     //    $squad20 = $repoSquad->find(Mexico);
 
-        $squad21 = $repoSquad->find(Brasil);
-        $squad22 = $repoSquad->find(Suiza);
+     //    $squad21 = $repoSquad->find(Brasil);
+     //    $squad22 = $repoSquad->find(Suiza);
 
-        $squad23 = $repoSquad->find(Suecia);
-        $squad24 = $repoSquad->find(Corea del sur);
+     //    $squad23 = $repoSquad->find(Suecia);
+     //    $squad24 = $repoSquad->find(Corea del sur);
 
-        $squad25 = $repoSquad->find(Belgica);
-        $squad26 = $repoSquad->find(Panama);
+     //    $squad25 = $repoSquad->find(Belgica);
+     //    $squad26 = $repoSquad->find(Panama);
 
-        $squad27 = $repoSquad->find(Túnez);
-        $squad28 = $repoSquad->find(Inglaterra);
+     //    $squad27 = $repoSquad->find(Túnez);
+     //    $squad28 = $repoSquad->find(Inglaterra);
 
-        $squad29 = $repoSquad->find(Polonia);
-        $squad30 = $repoSquad->find(senegal);
+     //    $squad29 = $repoSquad->find(Polonia);
+     //    $squad30 = $repoSquad->find(senegal);
 
-        $squad31 = $repoSquad->find(Colombia);
-        $squad32 = $repoSquad->find(Japon);
+     //    $squad31 = $repoSquad->find(Colombia);
+     //    $squad32 = $repoSquad->find(Japon);
 
        
 
@@ -145,6 +145,67 @@ class MatchController extends Controller
     	{
             return $this->json(array("success" => false, "message" => "No se encontro ningun usuario"));
     	}
+    }
+
+    /**
+     * @Route("/save/finalmatch/{id}", name="savefinalmatch")
+     */
+    public function saveFinalMatch($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $request = Request::createFromGlobals();
+        $content = $request->getContent();
+        $data = json_decode($content, true);
+        $repoMatch = $this->getDoctrine()->getRepository(Match::class);
+        $match = $repoMatch->find($id);
+        $match->setScore1($data["score1"]);
+        $match->setScore2($data["score2"]);
+        $forecastRepo = $this->getDoctrine()->getRepository(Forecast::class);
+        $forecasts = $forecastRepo->findBy(array("idMatch" => $match));
+        $pointRepo = $this->getDoctrine()->getRepository(Points::class);
+        foreach ($forecasts as $value) 
+        {
+            $point = $pointRepo->findOneBy(array("idUser" => $value->getIdUser()));
+            if(!$point)
+            {
+                $point = new Point();
+                $point->setIdUser($value->getIdUser());
+                $point->setPoint(0);
+                $em->persist($point);
+            }
+            $newPoint = $point->getPoint();
+            if($value->getScore1() == $data["score1"] && $value->getScore2() == $data["score2"])
+            {
+                $newPoint = $newPoint + 5;
+            }
+            else
+            {
+                if($data["score1"] > $data["score2"])
+                {
+                    if($value->getScore1() > $value->getScore2())
+                    {
+                        $newPoint = $newPoint + 2;
+                    }
+                }
+                else if($data["score1"] < $data["score2"])
+                {
+                    if($value->getScore1() < $value->getScore2())
+                    {
+                        $newPoint = $newPoint + 2;
+                    }
+                }
+                else
+                {
+                    if($value->getScore1() == $value->getScore2())
+                    {
+                        $newPoint = $newPoint + 2;
+                    }
+                }
+            }
+            $point->setPoint($newPoint);
+        }
+        $em->flush();
+        return $this->json(array("success" => true, "message" => "Marcador final guardado con exito"));
     }
 }
 ?>
