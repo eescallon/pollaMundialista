@@ -64,7 +64,7 @@ class MatchController extends Controller
 	        	{
 	        		$json = array();
 	        		$json["id"] = $match->getId();
-	        		//$json["date"] = $match->getDate()->format("Y-m-d H:i:s");
+	        		$json["date"] = $match->getDate()->format("Y-m-d H:i:s");
 	        		$squad1 = $match->getIdSquad1();
 	        		$jsonSquad1 = array();
 	        		$jsonSquad1["id"] = $squad1->getId();
