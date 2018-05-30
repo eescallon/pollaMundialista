@@ -34,21 +34,6 @@ class User
      */
     private $idPerson;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Points", mappedBy="idUser")
-     */
-    private $points;
-
-    public function __construct()
-    {
-        $this->points = new ArrayCollection();
-    }
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Person", cascade={"persist", "remove"})
-     */
-
-
     public function getId()
     {
         return $this->id;
@@ -93,34 +78,7 @@ class User
     /**
      * @return Collection|Points[]
      */
-    public function getPoints(): Collection
-    {
-        return $this->points;
-    }
-
-    public function addPoint(Points $point): self
-    {
-        if (!$this->points->contains($point)) {
-            $this->points[] = $point;
-            $point->setIdUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removePoint(Points $point): self
-    {
-        if ($this->points->contains($point)) {
-            $this->points->removeElement($point);
-            // set the owning side to null (unless already changed)
-            if ($point->getIdUser() === $this) {
-                $point->setIdUser(null);
-            }
-        }
-
-        return $this;
-    }
-
+ 
 
 
 }

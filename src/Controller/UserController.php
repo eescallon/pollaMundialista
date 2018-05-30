@@ -60,7 +60,6 @@ class UserController extends Controller
             $jsonUser = array();
             $jsonUser["id"] = $user->getId();
             $jsonUser["email"] = $user->getEmail();
-            $jsonUser["points"] = $user->getPoints();
             $person = $user->getIdPerson();
             if($person)
             {

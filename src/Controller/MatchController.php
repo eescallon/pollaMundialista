@@ -168,7 +168,7 @@ class MatchController extends Controller
             $point = $pointRepo->findOneBy(array("idUser" => $value->getIdUser()));
             if(!$point)
             {
-                $point = new Point();
+                $point = new Points();
                 $point->setIdUser($value->getIdUser());
                 $point->setPoint(0);
                 $em->persist($point);
