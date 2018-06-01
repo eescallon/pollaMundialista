@@ -27,7 +27,7 @@ class MatchController extends Controller
         $em->persist($match1);
 
         $squad3 = $repoSquad->find(25);
-        $squad4 = $repoSquad->find(15)
+        $squad4 = $repoSquad->find(15);
         $match = new Match();
         $match2->setDate(new \Datetime());
         $match2->setIdSquad1($squad3);
@@ -35,7 +35,7 @@ class MatchController extends Controller
         $em->persist($match2);
 
         $squad5 = $repoSquad->find(28);
-        $squad6 = $repoSquad->find(23)
+        $squad6 = $repoSquad->find(23);
         $match3 = new Match();
         $match3->setDate(new \Datetime());
         $match3->setIdSquad1($squad5);
