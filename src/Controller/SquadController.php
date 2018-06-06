@@ -36,7 +36,7 @@ class SquadController extends Controller
     			"flag" => "argentina.jpg" 
     		),
     		array(
-    			"name" => "Belgica",
+    			"name" => "Bélgica",
     			"flag" => "belgica.jpg" 
     		),
     		array(
@@ -52,14 +52,14 @@ class SquadController extends Controller
     			"flag" => "España.jpg" 
     		),
     		array(
-    			"name" => "Peru",
+    			"name" => "Perú",
     			"flag" => "peru.jpg" 
     		),
     		array(
-    			"name" => "Suisa",
-    			"flag" => "suisa.jpg" 
+    			"name" => "Suiza",
+    			"flag" => "suiza.jpg" 
     		),
-    		array(
+    		array(|
     			"name" => "Inglaterra",
     			"flag" => "inglaterra.jpg" 
     		),
@@ -68,15 +68,15 @@ class SquadController extends Controller
     			"flag" => "colombia.jpg" 
     		),
     		array(
-    			"name" => "Mexico",
+    			"name" => "México",
     			"flag" => "mexico.jpg" 
     		),
     		array(
-    			"name" => "Uruguay",
+    			"name" => "Urúguay",
     			"flag" => "uruguay.jpg" 
     		),
     		array(
-    			"name" => "Croacia",
+    			"name" => "Croacía",
     			"flag" => "croacia.jpg" 
     		),
     		array(
@@ -84,7 +84,7 @@ class SquadController extends Controller
     			"flag" => "dinarmarca.jpg" 
     		),
     		array(
-    			"name" => "Islandia",
+    			"name" => "Islandía",
     			"flag" => "islandia.jpg" 
     		),
     		array(
@@ -96,7 +96,7 @@ class SquadController extends Controller
     			"flag" => "suecia.jpg" 
     		),
     		array(
-    			"name" => "Tunez",
+    			"name" => "Túnez",
     			"flag" => "tunez.jpg" 
     		),
     		array(
@@ -104,7 +104,7 @@ class SquadController extends Controller
     			"flag" => "egipto.jpg" 
     		),
     		array(
-    			"name" => "Iran",
+    			"name" => "Irán",
     			"flag" => "iran.jpg" 
     		),
     		array(
@@ -128,7 +128,7 @@ class SquadController extends Controller
     			"flag" => "marruecos.jpg" 
     		),
     		array(
-    			"name" => "Panama",
+    			"name" => "Panamá",
     			"flag" => "panama.jpg" 
     		),
     		array(
@@ -139,6 +139,10 @@ class SquadController extends Controller
     			"name" => "Arabia Saudita",
     			"flag" => "arabiasaudita.jpg" 
     		),
+            array(
+                 "name" => "Senegal",
+                 "flag" => "senegal.jpg"
+            )
     	);
         $entityManager = $this->getDoctrine()->getManager();
         $return = array();
