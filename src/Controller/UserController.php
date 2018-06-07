@@ -81,7 +81,7 @@ class UserController extends Controller
         $user = new User();
         $user->setEmail($data['email']);
         $user->setPassword($data['password']);
-        $user->setIdPerson($data['person']);
+        $user->setIdPerson($person);
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)
         $entityManager->persist($user);
