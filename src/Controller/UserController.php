@@ -45,6 +45,40 @@ class UserController extends Controller
     }
 
     /**
+     * @Route("/save/user", name="saveuser")
+     */
+    public function saveUser()
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $request = Request::createFromGlobals();
+        $content = $request->getContent();
+        $data = json_decode($content, true);
+
+        $person = new Person();
+        $person->setName($data['name']);
+        $person->setLastname($data['lastName']);
+        $person->setBirthday(new \Datetime($data['birthday']));
+        $person->setSex($data'sex');
+        $person->setAdress($data['adress']);
+        $person->setCity($data['city']);
+        $person->setPhone($data['phone']);
+        $entityManager->persist($person);
+        $user = new User();
+        $user->setEmail($data['email']);
+        $user->setPassword($data['password']);
+        $user->setIdPerson($person);
+
+        // tell Doctrine you want to (eventually) save the Product (no queries yet)
+        $entityManager->persist($user);
+
+        // actually executes the queries (i.e. the INSERT query)
+        $entityManager->flush();
+
+        return $this->json(array("success" => true, "message" => "Usuario creado con exito"));
+    }
+
+    /**
      * @Route("/login", name="login")
      */
     public function loginAction()
