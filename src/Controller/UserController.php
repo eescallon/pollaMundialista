@@ -59,7 +59,7 @@ class UserController extends Controller
         $person->setName($data['name']);
         $person->setLastname($data['lastName']);
         $person->setBirthday(new \Datetime($data['birthday']));
-        $person->setSex($data'sex');
+        $person->setSex($data['sex']);
         $person->setAdress($data['adress']);
         $person->setCity($data['city']);
         $person->setPhone($data['phone']);
