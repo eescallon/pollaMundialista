@@ -18,7 +18,6 @@ class MatchController extends Controller
 	public function insertMatch(){
     	$em = $this->getDoctrine()->getManager(); 
     	$repoSquad = $this->getDoctrine()->getRepository(Squad::class);
-<<<<<<< HEAD
     	$squadRusia = $repoSquad->find(1);
     	$squadarabiasaudita = $repoSquad->find(31);
 
@@ -356,7 +355,7 @@ class MatchController extends Controller
         $em->persist($match48);
 
         $em->flush();
-=======
+
         $squad1 = $repoSquad->find(1);
         $squad2 = $repoSquad->find(31);
         $match1 = new Match();
@@ -486,8 +485,7 @@ class MatchController extends Controller
         $em->persist($match16);
     	
     	$em->flush();
->>>>>>> 28fc4f6014c065ee5fafc2d455f53b2229a9e53e
-        return $this->json(array("success" => false, "message" => "Partidos creados"));
+                return $this->json(array("success" => false, "message" => "Partidos creados"));
 	}
 
 	/**
@@ -611,4 +609,3 @@ class MatchController extends Controller
         return $this->json(array("success" => true, "message" => "Marcador final guardado con exito"));
     }
 }
-?>

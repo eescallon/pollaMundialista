@@ -59,7 +59,7 @@ class SquadController extends Controller
     			"name" => "Suiza",
     			"flag" => "suiza.jpg" 
     		),
-    		array(|
+    		array(
     			"name" => "Inglaterra",
     			"flag" => "inglaterra.jpg" 
     		),

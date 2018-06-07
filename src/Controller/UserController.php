@@ -18,31 +18,17 @@ class UserController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
 
         $person = new Person();
-        $person->setName("Brayan");
-        $person->setLastname("Agudelo");
-        $person->setBirthday(new \Datetime());
-        $person->setSex("M");
+        $person->setName("Saira");
+        $person->setLastname("Gonzalez");
+        $person->setBirthday(new \Datetime("1988-11-12"));
+        $person->setSex("F");
         $person->setAdress("Direccion");
         $person->setCity("Bogota");
         $person->setPhone("'54352342'");
         $entityManager->persist($person);
         $user = new User();
-        $user->setEmail('bagudelo');
-        $user->setPassword("brayan123");
-        $user->setIdPerson($person);
-
-          $person = new Person();
-        $person->setName("Nicolas");
-        $person->setLastname("Bedoya");
-        $person->setBirthday(new \Datetime());
-        $person->setSex("M");
-        $person->setAdress("Direccion");
-        $person->setCity("Bogota");
-        $person->setPhone("'1234567'");
-        $entityManager->persist($person);
-        $user = new User();
-        $user->setEmail('nicolasbed');
-        $user->setPassword("apb");
+        $user->setEmail('sgonzalez');
+        $user->setPassword("password12345");
         $user->setIdPerson($person);
 
 
